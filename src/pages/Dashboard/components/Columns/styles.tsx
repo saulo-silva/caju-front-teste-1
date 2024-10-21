@@ -1,7 +1,5 @@
 import styled from "styled-components";
-const registrationStatusStyles: {
-  [key in string]: { background: string; title: string };
-} = {
+const registrationStatusStyles: Record<string, { background: string; title: string }> = {
   REVIEW: {
     background: "#FDF8E9",
     title: "#EFC24D",
@@ -15,6 +13,7 @@ const registrationStatusStyles: {
     title: "#CE2893",
   },
 };
+type RegistrationStatus = keyof typeof registrationStatusStyles;
 
 export const Container = styled.div`
   display: grid;
@@ -24,7 +23,7 @@ export const Container = styled.div`
   margin-top: 24px;
 `;
 
-export const Column = styled.div<{ status: any }>`
+export const Column = styled.div<{ status: RegistrationStatus }>`
   height: auto;
   background-color: ${({ status }) =>
     registrationStatusStyles[status].background};
@@ -33,8 +32,7 @@ export const Column = styled.div<{ status: any }>`
   max-height: 80vh;
 `;
 
-export const TitleColumn = styled.h3<{ status: any }>`
-  margin: 0px;
+export const TitleColumn = styled.h3<{ status: RegistrationStatus }>`
   color: ${({ status }) => registrationStatusStyles[status].title};
   margin: 24px;
 `;

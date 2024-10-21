@@ -1,6 +1,7 @@
+import React from "react";
 import styled from "styled-components";
 
-export const _IconButtonStyled = styled.button`
+export const IconButtonStyled = styled.button`
   cursor: pointer;
   border: 2px solid #64a98c;
   width: fit-content;
@@ -21,8 +22,8 @@ type IconButtonProps = {
 
 export const IconButton = (props: IconButtonProps) => {
   return (
-    <_IconButtonStyled {...props}>
+    <IconButtonStyled {...props}>
       {props.children}
-    </_IconButtonStyled>
+    </IconButtonStyled>
   );
 };
