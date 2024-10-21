@@ -1,15 +1,19 @@
-import TextField from "~/components/TextField";
-import * as S from "./styles";
-import Button from "~/components/Buttons";
+import { useNavigate } from "react-router-dom";
 import { HiOutlineArrowLeft } from "react-icons/hi";
+
+import TextField from "~/components/TextField";
+import Button from "~/components/Buttons";
+
 import { IconButton } from "~/components/Buttons/IconButton";
-import { useHistory } from "react-router-dom";
+
 import routes from "~/router/routes";
 
+import * as S from "./styles";
+
 const NewUserPage = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const goToHome = () => {
-    history.push(routes.dashboard);
+    navigate(routes.dashboard);
   };
 
   return (
