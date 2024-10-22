@@ -13,7 +13,6 @@ import routes from "~/router/routes";
 
 import * as S from "./styles";
 
-
 const newUserSchema = z.object({
   email: z.string().email({ message: "Formato de e-mail inválido" }),
   employeeName: z
@@ -30,7 +29,6 @@ const newUserSchema = z.object({
       return parts.every(part => part.length >= 2);
     }, { message: "É necessário ter dois caracteres, entre nome e sobrenome" }),
   cpf: z.string().min(11, { message: "O CPF deve ter pelo menos 11 caracteres" }).max(14, { message: "O CPF não pode ter mais de 14 caracteres" }),
-  // status: z.enum(['APPROVED', 'REVIEW', 'REPROVED'], { message: "Status inválido" }),
   admissionDate: z.string().refine((date) => !isNaN(Date.parse(date)), { message: "Data de admissão inválida" }),
 });
 
