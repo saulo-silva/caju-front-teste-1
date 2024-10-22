@@ -15,14 +15,14 @@ type Props = {
 const Columns = (props: Props) => {
   return (
     <S.Container>
-      {allColumns.map((collum) => {
+      {allColumns.map((column) => {
         return (
-          <S.Column status={collum.status} key={collum.title}>
+          <S.Column $status={column.status} key={column.title}>
             <>
-              <S.TitleColumn status={collum.status}>
-                {collum.title}
+              <S.TitleColumn $status={column.status}>
+                {column.title}
               </S.TitleColumn>
-              <S.CollumContent>
+              <S.ColumnContent>
                 {props?.registrations?.map((registration) => {
                   return (
                     <RegistrationCard
@@ -31,7 +31,7 @@ const Columns = (props: Props) => {
                     />
                   );
                 })}
-              </S.CollumContent>
+              </S.ColumnContent>
             </>
           </S.Column>
         );
