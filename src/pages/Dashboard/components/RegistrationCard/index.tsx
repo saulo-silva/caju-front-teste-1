@@ -13,6 +13,7 @@ export type registrationType = {
   employeeName: string
   email: string
   admissionDate: string
+  status: string
 }
 
 type Props = {

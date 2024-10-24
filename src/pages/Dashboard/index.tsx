@@ -9,6 +9,7 @@ const generateRegistration = (): registrationType => {
     employeeName: "John Doe",
     email: "john.doe@example.com",
     admissionDate: new Date().toISOString().split('T')[0],
+    status: 'REVIEW',
   };
 };
 

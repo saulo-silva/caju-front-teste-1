@@ -23,14 +23,11 @@ const Columns = (props: Props) => {
                 {column.title}
               </S.TitleColumn>
               <S.ColumnContent>
-                {props?.registrations?.map((registration) => {
-                  return (
-                    <RegistrationCard
-                      registration={registration}
-                      key={registration.id}
-                    />
-                  );
-                })}
+                {props?.registrations?.map((registration) =>
+                  <RegistrationCard
+                    registration={registration}
+                    key={registration.id}
+                  />)}
               </S.ColumnContent>
             </>
           </S.Column>
