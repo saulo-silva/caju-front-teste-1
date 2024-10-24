@@ -1,9 +1,8 @@
-import { forwardRef, InputHTMLAttributes } from "react";
+import { forwardRef, SelectHTMLAttributes } from "react";
 import styled from "styled-components";
-
 import ErrorMessage from "~/components/ErrorMessage";
 
-export const Input = styled.input`
+export const Select = styled.select`
   padding: 0 8px;
   margin-top: 8px;
   vertical-align: middle;
@@ -15,7 +14,7 @@ export const Input = styled.input`
   font-size: 16px;
   line-height: 18px;
   font-weight: normal;
-  border-radius:8px;
+  border-radius: 8px;
   :focus {
     outline: none;
     border: 1px solid #007c89;
@@ -26,16 +25,23 @@ export const Input = styled.input`
 type Props = {
   label?: string;
   error?: string;
-} & InputHTMLAttributes<HTMLInputElement>;
+  options: { value: string; label: string }[];
+} & SelectHTMLAttributes<HTMLSelectElement>;
 
-const TextField = forwardRef<HTMLInputElement, Props>(({ label, error, id, ...rest }, ref) => {
+const SelectField = forwardRef<HTMLSelectElement, Props>(({ label, error, id, options, ...rest }, ref) => {
   return (
     <div>
       {label && <label htmlFor={id}>{label}</label>}
-      <Input ref={ref} id={id} {...rest} />
-      {error && <ErrorMessage>{error}</ErrorMessage>}
+      <Select ref={ref} id={id} {...rest}>
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </Select>
+      <ErrorMessage>{error}</ErrorMessage>
     </div>
   );
 });
 
-export default TextField;
+export default SelectField;

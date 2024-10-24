@@ -1,10 +1,21 @@
 import { HiRefresh } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
-import Button from "~/components/Buttons";
+
 import { IconButton } from "~/components/Buttons/IconButton";
+import Button from "~/components/Buttons";
 import TextField from "~/components/TextField";
+import SelectField from "~/components/Select";
+
 import routes from "~/router/routes";
+
 import * as S from "./styles";
+
+const options = [
+  { value: "APPROVED", label: "Aprovado" },
+  { value: "REVIEW", label: "Reprovado" },
+  { value: "REPROVED", label: "Pronto para revisar" },
+];
+
 export const SearchBar = () => {
   const navigate = useNavigate();
 
@@ -14,7 +25,8 @@ export const SearchBar = () => {
 
   return (
     <S.Container>
-      <TextField  placeholder="Digite um CPF válido" />
+      <TextField placeholder="Digite um CPF válido" />
+      <SelectField options={options} />
       <S.Actions>
         <IconButton aria-label="refetch">
           <HiRefresh />

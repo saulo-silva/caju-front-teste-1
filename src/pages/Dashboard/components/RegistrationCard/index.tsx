@@ -1,11 +1,12 @@
 import { ButtonSmall } from "~/components/Buttons";
-import * as S from "./styles";
 import {
   HiOutlineMail,
   HiOutlineUser,
   HiOutlineCalendar,
   HiOutlineTrash,
 } from "react-icons/hi";
+
+import * as S from "./styles";
 
 export type registrationType = {
   id: number
