@@ -8,17 +8,16 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 16px;
 `;
 
-export const Card = styled.div`
+export const Form = styled.form`
   border: 2px solid #f0f0f0;
   width: 500px;
   padding: 48px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
- 
+  margin-top: 8px;
+  gap: 16px; 
   ${IconButtonStyled} {
     margin-bottom: 8px;
     align-items: flex-start;
