@@ -5,7 +5,6 @@ import ErrorMessage from "~/components/ErrorMessage";
 export const Select = styled.select`
   padding: 0 8px;
   margin-top: 8px;
-  vertical-align: middle;
   width: 100%;
   min-height: 36px;
   background-color: #ffffff;

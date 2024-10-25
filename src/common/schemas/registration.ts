@@ -1,6 +1,8 @@
 import { z } from 'zod';
 import { validateCPF } from "~/common/utils.ts";
 
+const statusSchema = z.enum(['APPROVED', 'REVIEW', 'REPROVED']);
+
 const emailSchema = z.string().email({ message: "Por favor, digite um formato de e-mail válido" });
 
 const employeeNameSchema = z
@@ -36,7 +38,14 @@ export const schema = z.object({
   admissionDate: admissionDateSchema,
 });
 
+export const schemaSearch = z.object({
+  cpf: cpfSchema.optional(),
+  status: statusSchema.optional(),
+});
+
 export type Registration = z.infer<typeof schema> & {
   id?: number;
   status?: 'APPROVED' | 'REVIEW' | 'REPROVED';
 };
+
+export type RegistrationSearch = z.infer<typeof schemaSearch>;
