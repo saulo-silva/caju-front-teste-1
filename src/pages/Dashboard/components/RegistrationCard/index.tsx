@@ -1,4 +1,4 @@
-import { ButtonSmall } from "~/components/Buttons";
+import { ButtonSmall } from "@/components/Buttons";
 import {
   HiOutlineMail,
   HiOutlineUser,
@@ -7,9 +7,9 @@ import {
 } from "react-icons/hi";
 
 import * as S from "./styles";
-import { useRegistrationDelete, useRegistrationUpdateStatus } from "~/common/hooks/react-query/registrations.ts";
+import { useRegistrationDelete, useRegistrationUpdateStatus } from "@/common/hooks/react-query/registrations.ts";
 import { useModal } from "@ebay/nice-modal-react";
-import ConfirmationModal from "~/components/ConfirmationModal";
+import ConfirmationModal from "@/components/ConfirmationModal";
 
 export type registrationType = {
   id: number

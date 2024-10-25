@@ -3,15 +3,15 @@ import { HiOutlineArrowLeft } from "react-icons/hi";
 import { useForm } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import TextField from "~/components/TextField";
-import Button from "~/components/Buttons";
-import { IconButton } from "~/components/Buttons/IconButton";
+import TextField from "@/components/TextField";
+import Button from "@/components/Buttons";
+import { IconButton } from "@/components/Buttons/IconButton";
 
-import { type Registration, schema } from "~/common/schemas/registration";
-import { useRegistrationCreate } from "~/common/hooks/react-query/registrations";
-import { formatCPF } from "~/common/utils";
+import { type Registration, schema } from "@/common/schemas/registration";
+import { useRegistrationCreate } from "@/common/hooks/react-query/registrations";
+import { formatCPF } from "@/common/utils";
 
-import routes from "~/router/routes";
+import routes from "@/router/routes";
 
 import * as S from "./styles";
 

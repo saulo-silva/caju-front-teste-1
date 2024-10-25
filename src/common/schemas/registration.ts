@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { validateCPF } from "~/common/utils.ts";
+import { validateCPF } from "@/common/utils.ts";
 
 export const statusSchema = z.enum(['APPROVED', 'REVIEW', 'REPROVED']);
 

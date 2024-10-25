@@ -1,5 +1,5 @@
-import axiosInstance from '~/common/instanceAxios.ts'
-import { Registration, RegistrationSearch } from "~/common/schemas/registration";
+import axiosInstance from '@/common/instanceAxios.ts'
+import { Registration, RegistrationSearch } from "@/common/schemas/registration";
 
 
 export const Registrations = {

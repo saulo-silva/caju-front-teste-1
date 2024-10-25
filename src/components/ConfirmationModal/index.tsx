@@ -1,9 +1,9 @@
 import { useCallback, useState } from "react";
 import Modal from 'styled-react-modal';
 import styled from "styled-components";
-import NiceModal, { useModal } from "@ebay/nice-modal-react";
+import { useModal, create } from "@ebay/nice-modal-react";
 
-import { ButtonSmall } from "~/components/Buttons";
+import { ButtonSmall } from "@/components/Buttons";
 
 const StyledModal = Modal.styled`
   width: 25rem;
@@ -34,7 +34,7 @@ type Props = {
   title: string;
 }
 
-const ConfirmationModal = NiceModal.create(({ title }: Props) => {
+const ConfirmationModal = create(({ title }: Props) => {
   const modal = useModal();
   const [opacity, setOpacity] = useState(0);
 

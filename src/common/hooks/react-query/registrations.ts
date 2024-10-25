@@ -1,7 +1,7 @@
 import { toast } from "sonner";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Registration, RegistrationSearch } from "~/common/schemas/registration";
-import { Registrations } from "~/common/services/registrations";
+import { Registration, RegistrationSearch } from "@/common/schemas/registration";
+import { Registrations } from "@/common/services/registrations";
 
 const queryKeys = {
   registrationSearch: 'registration-search',

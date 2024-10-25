@@ -1,6 +1,6 @@
 import { forwardRef, SelectHTMLAttributes } from "react";
 import styled from "styled-components";
-import ErrorMessage from "~/components/ErrorMessage";
+import ErrorMessage from "@/components/ErrorMessage";
 
 export const Select = styled.select`
   padding: 0 8px;
