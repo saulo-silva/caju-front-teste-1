@@ -1,5 +1,15 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { useIsFetching } from "@tanstack/react-query";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+
+const rotate = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
 
 const Overlay = styled.div`
   position: fixed;
@@ -14,9 +24,10 @@ const Overlay = styled.div`
   z-index: 9999;
 `;
 
-const LoadingText = styled.div`
-    font-size: 24px;
-    color: #333;
+const RotatingIcon = styled(AiOutlineLoading3Quarters)`
+  font-size: 42px;
+  color: #ff4500;
+  animation: ${rotate} 1s linear infinite;
 `;
 
 const LoadingOverlay = () => {
@@ -25,7 +36,7 @@ const LoadingOverlay = () => {
   if (isFetching) {
     return (
       <Overlay>
-        <LoadingText>Loading...</LoadingText>
+        <RotatingIcon>Loading...</RotatingIcon>
       </Overlay>
     );
   }

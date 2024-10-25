@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import RegistrationCard from "../RegistrationCard";
 import type { registrationType } from "../RegistrationCard";
 import { useRegistrationUpdateStatus } from "~/common/hooks/react-query/registrations.ts";
+import ConfirmationModal from "~/components/ConfirmationModal";
 
 const allColumns = [
   { status: 'REVIEW', title: "Pronto para revisar" },
@@ -71,6 +72,7 @@ const Columns = ({ registrations }: Props) => {
           </S.Column>
         );
       })}
+      <ConfirmationModal />
     </S.Container>
   );
 };
