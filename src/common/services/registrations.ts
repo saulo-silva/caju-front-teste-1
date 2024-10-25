@@ -8,7 +8,9 @@ export const Registrations = {
   },
   async search(params?: RegistrationSearch) {
     return await axiosInstance.get('/registrations', {
-      params
+      params: {
+        cpf_like: `^${params?.cpf?.replace(/\D/g, '')}`,
+      }
     })
   },
   async delete(id: number) {
