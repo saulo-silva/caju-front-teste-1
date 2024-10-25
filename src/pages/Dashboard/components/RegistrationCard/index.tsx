@@ -1,4 +1,4 @@
-import { ButtonSmall } from "~/components/Buttons";
+import { ButtonSmall } from "@/components/Buttons";
 import {
   HiOutlineMail,
   HiOutlineUser,
@@ -7,7 +7,9 @@ import {
 } from "react-icons/hi";
 
 import * as S from "./styles";
-import { useRegistrationDelete, useRegistrationUpdateStatus } from "~/common/hooks/react-query/registrations.ts";
+import { useRegistrationDelete, useRegistrationUpdateStatus } from "@/common/hooks/react-query/registrations.ts";
+import { useModal } from "@ebay/nice-modal-react";
+import ConfirmationModal from "@/components/ConfirmationModal";
 
 export type registrationType = {
   id: number
@@ -22,11 +24,24 @@ type Props = {
 };
 
 const ActionButtons = ({ id, status }: { id: number; status: 'APPROVED' | 'REVIEW' | 'REPROVED' }) => {
+  const modal = useModal(ConfirmationModal);
   const mutation = useRegistrationUpdateStatus();
 
-  const updateStatus = (status: 'APPROVED' | 'REVIEW' | 'REPROVED') => {
-    mutation.mutate({ id, status });
-  }
+const updateStatus = (status: 'APPROVED' | 'REVIEW' | 'REPROVED') => {
+  const messages = {
+    'APPROVED': 'Tem certeza que deseja aprovar?',
+    'REPROVED': 'Tem certeza que deseja reprovar?',
+    'REVIEW': 'Tem certeza que deseja revisar novamente?',
+  };
+
+  const message = messages[status] || 'Tem certeza que deseja atualizar situação?';
+
+  modal.show({ title: message }).then((result) => {
+    if (result) {
+      mutation.mutate({ id, status });
+    }
+  });
+}
 
   if (status === 'REVIEW') {
     return (
@@ -47,9 +62,14 @@ const ActionButtons = ({ id, status }: { id: number; status: 'APPROVED' | 'REVIE
 const RegistrationCard = ({ registration }: Props) => {
   const { id, employeeName, email, admissionDate, status } = registration
   const mutation = useRegistrationDelete();
+  const modal = useModal(ConfirmationModal);
 
-  const handleDelete = async () => {
-    await mutation.mutateAsync({ id });
+  const handleDelete = () => {
+    modal.show({ title: 'Tem certeza que deseja excluir?' }).then((result) => {
+      if (result) {
+        mutation.mutate({ id });
+      }
+    });
   }
 
   return (

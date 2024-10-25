@@ -1,7 +1,7 @@
 import { forwardRef, InputHTMLAttributes } from "react";
 import styled from "styled-components";
 
-import ErrorMessage from "~/components/ErrorMessage";
+import ErrorMessage from "@/components/ErrorMessage";
 
 export const Input = styled.input`
   padding: 0 8px;

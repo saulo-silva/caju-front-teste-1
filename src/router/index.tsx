@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import routes from "./routes";
-import DashboardPage from "~/pages/Dashboard";
-import NewUserPage from "~/pages/NewUser";
+import DashboardPage from "@/pages/Dashboard";
+import NewUserPage from "@/pages/NewUser";
 
 const router = createBrowserRouter([
   {
@@ -27,3 +27,4 @@ const Router = () => {
 };
 
 export default Router;
+

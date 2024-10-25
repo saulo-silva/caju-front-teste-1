@@ -1,5 +1,5 @@
-import axiosInstance from '~/common/instanceAxios.ts'
-import { Registration, RegistrationSearch } from "~/common/schemas/registration";
+import axiosInstance from '@/common/instanceAxios.ts'
+import { Registration, RegistrationSearch } from "@/common/schemas/registration";
 
 
 export const Registrations = {
@@ -8,7 +8,9 @@ export const Registrations = {
   },
   async search(params?: RegistrationSearch) {
     return await axiosInstance.get('/registrations', {
-      params
+      params: {
+        cpf_like: `^${params?.cpf?.replace(/\D/g, '')}`,
+      }
     })
   },
   async delete(id: number) {
