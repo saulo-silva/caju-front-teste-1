@@ -1,5 +1,5 @@
+import { toast } from "sonner";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-
 import { Registration, RegistrationSearch } from "~/common/schemas/registration";
 import { Registrations } from "~/common/services/registrations";
 
@@ -12,6 +12,12 @@ export const useRegistrationCreate = () => {
     mutationFn: (payload: Registration) => {
       return Registrations.create(payload)
     },
+    onSuccess: () => {
+      toast.success('Registro criado com sucesso!');
+    },
+    onError: () => {
+      toast.error('Erro ao criar registro!');
+    }
   });
 }
 
@@ -25,6 +31,10 @@ export const useRegistrationUpdateStatus = () => {
     onSuccess: async () => {
       await queryClient.cancelQueries({ queryKey: [queryKeys.registrationSearch] });
       await queryClient.refetchQueries({ queryKey: [queryKeys.registrationSearch] });
+      toast.success('Situação atualizada com sucesso!');
+    },
+    onError: () => {
+      toast.error('Erro ao atualizar situação!');
     }
   });
 }
@@ -39,6 +49,10 @@ export const useRegistrationDelete = () => {
     onSuccess: async () => {
       await queryClient.cancelQueries({ queryKey: [queryKeys.registrationSearch] });
       await queryClient.refetchQueries({ queryKey: [queryKeys.registrationSearch] });
+      toast.success('Registro excluído com sucesso!');
+    },
+    onError: () => {
+      toast.error('Erro ao excluir registro!');
     }
   });
 }
@@ -52,7 +66,6 @@ export const useRegistrationSearch = (params?: RegistrationSearch) => {
       return data.data;
     },
     retry: false,
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
+    refetchOnWindowFocus: false
   })
 }
