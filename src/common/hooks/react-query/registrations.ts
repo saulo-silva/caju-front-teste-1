@@ -51,5 +51,8 @@ export const useRegistrationSearch = (params?: RegistrationSearch) => {
 
       return data.data;
     },
+    retry: false,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
   })
 }
