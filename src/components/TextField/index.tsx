@@ -1,6 +1,8 @@
 import { forwardRef, InputHTMLAttributes } from "react";
 import styled from "styled-components";
 
+import ErrorMessage from "~/components/ErrorMessage";
+
 export const Input = styled.input`
   padding: 0 8px;
   margin-top: 8px;
@@ -20,17 +22,18 @@ export const Input = styled.input`
     box-shadow: inset 0 0 0 1px #007c89;
   }
 `;
+
 type Props = {
   label?: string;
   error?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
-const TextField = forwardRef<HTMLInputElement, Props>((props, ref) => {
+const TextField = forwardRef<HTMLInputElement, Props>(({ label, error, id, ...rest }, ref) => {
   return (
     <div>
-      <label htmlFor={props.id}>{props.label}</label>
-      <Input ref={ref} {...props} />
-      <span style={{ fontSize: 12, color: 'red' }}>{props.error}</span>
+      {label && <label htmlFor={id}>{label}</label>}
+      <Input ref={ref} id={id} {...rest} />
+      {error && <ErrorMessage>{error}</ErrorMessage>}
     </div>
   );
 });
