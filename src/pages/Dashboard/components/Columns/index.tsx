@@ -22,7 +22,7 @@ const Columns = ({ registrations }: Props) => {
     <S.Container>
       {allColumns.map((column) => {
         return (
-          <S.Column $status={column.status} key={column.title}>
+          <S.Column $status={column.status} key={column.status}>
             <>
               <S.TitleColumn $status={column.status}>
                 {column.title}
