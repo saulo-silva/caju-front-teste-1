@@ -14,6 +14,7 @@ import { formatCPF } from "@/common/utils";
 import routes from "@/router/routes";
 
 import * as S from "./styles";
+import {toast} from "sonner";
 
 const NewUserPage = () => {
   const mutation = useRegistrationCreate();
@@ -29,23 +30,37 @@ const NewUserPage = () => {
   const onSubmit = handleSubmit(data => {
     mutation.mutate(data, {
       onSuccess: () => {
+        toast.success('Registro criado com sucesso!');
         goToHome();
       },
-      onError: (error) => {
-        console.error('Erro ao criar usuário:', error.message);
+      onError: () => {
+        toast.error('Erro ao criar registro!');
       }
     });
   });
 
   return (
     <S.Container>
-      <S.Form onSubmit={onSubmit}>
-        <IconButton onClick={() => goToHome()} aria-label="back">
+      <S.Form onSubmit={onSubmit} data-testid="new-user-form">
+        <IconButton onClick={() => goToHome()} aria-label="back" data-testid="back-button">
           <HiOutlineArrowLeft size={24} />
         </IconButton>
 
-        <TextField  {...register("employeeName")} error={errors.employeeName?.message} placeholder="Nome" label="Nome" />
-        <TextField  {...register("email")} error={errors.email?.message} placeholder="Email" label="Email" type="email" />
+        <TextField
+          {...register("employeeName")}
+          error={errors.employeeName?.message}
+          placeholder="Nome"
+          label="Nome"
+          data-testid="employee-name-input"
+        />
+        <TextField
+          {...register("email")}
+          error={errors.email?.message}
+          placeholder="Email"
+          label="Email"
+          type="email"
+          data-testid="email-input"
+        />
         <TextField
           {...register("cpf")}
           error={errors.cpf?.message}
@@ -56,10 +71,17 @@ const NewUserPage = () => {
             const formattedValue = formatCPF(e.target.value);
             setValue('cpf', formattedValue, { shouldValidate: true });
           }}
+          data-testid="cpf-input"
         />
-        <TextField {...register("admissionDate")} error={errors.admissionDate?.message} label="Data de admissão" type="date" />
+        <TextField
+          {...register("admissionDate")}
+          error={errors.admissionDate?.message}
+          label="Data de admissão"
+          type="date"
+          data-testid="admission-date-input"
+        />
 
-        <Button type="submit">Cadastrar</Button>
+        <Button type="submit" data-testid="submit-button">Cadastrar</Button>
       </S.Form>
     </S.Container>
   );

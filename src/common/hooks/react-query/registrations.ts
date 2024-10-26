@@ -11,12 +11,6 @@ export const useRegistrationCreate = () => {
   return useMutation({
     mutationFn: (payload: Registration) => {
       return Registrations.create(payload)
-    },
-    onSuccess: () => {
-      toast.success('Registro criado com sucesso!');
-    },
-    onError: () => {
-      toast.error('Erro ao criar registro!');
     }
   });
 }
