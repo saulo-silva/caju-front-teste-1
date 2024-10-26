@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import Modal from 'styled-react-modal';
+import Modal from "styled-react-modal";
 import styled from "styled-components";
 import { useModal, create } from "@ebay/nice-modal-react";
 
@@ -23,7 +23,7 @@ const StyledModal = Modal.styled`
     margin-right: 16px;
     text-align: center;
   }
-`
+`;
 
 const Actions = styled.div`
   display: flex;
@@ -74,4 +74,4 @@ const ConfirmationModal = create(({ title }: Props) => {
   );
 });
 
-export default ConfirmationModal
+export default ConfirmationModal;

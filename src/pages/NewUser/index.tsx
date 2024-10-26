@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { HiOutlineArrowLeft } from "react-icons/hi";
 import { useForm } from "react-hook-form";
-import { zodResolver } from '@hookform/resolvers/zod';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
 
 import TextField from "@/components/TextField";
 import Button from "@/components/Buttons";
@@ -14,7 +15,6 @@ import { formatCPF } from "@/common/utils";
 import routes from "@/router/routes";
 
 import * as S from "./styles";
-import {toast} from "sonner";
 
 const NewUserPage = () => {
   const mutation = useRegistrationCreate();
@@ -30,11 +30,11 @@ const NewUserPage = () => {
   const onSubmit = handleSubmit(data => {
     mutation.mutate(data, {
       onSuccess: () => {
-        toast.success('Registro criado com sucesso!');
+        toast.success("Registro criado com sucesso!");
         goToHome();
       },
       onError: () => {
-        toast.error('Erro ao criar registro!');
+        toast.error("Erro ao criar registro!");
       }
     });
   });
@@ -69,7 +69,7 @@ const NewUserPage = () => {
           maxLength={14}
           onChange={(e) => {
             const formattedValue = formatCPF(e.target.value);
-            setValue('cpf', formattedValue, { shouldValidate: true });
+            setValue("cpf", formattedValue, { shouldValidate: true });
           }}
           data-testid="cpf-input"
         />

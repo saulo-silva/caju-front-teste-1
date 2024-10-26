@@ -13,14 +13,14 @@ describe("ButtonSmall", () => {
   it("Should apply the correct background color", () => {
     render(<ButtonSmall $bgcolor="red">Small Button</ButtonSmall>);
     const button = screen.getByRole("button", { name: /small button/i });
-    expect(button).toHaveStyle('background-color: rgb(255, 0, 0)');
+    expect(button).toHaveStyle("background-color: rgb(255, 0, 0)");
   });
 
-  test('Should have a default background-color when bgcolor is not provided', () => {
+  test("Should have a default background-color when bgcolor is not provided", () => {
     render(<ButtonSmall>Test Button</ButtonSmall>);
 
-    const button = screen.getByRole('button', { name: /test button/i });
+    const button = screen.getByRole("button", { name: /test button/i });
 
-    expect(button).toHaveStyle('background-color: rgba(0, 0, 0, 0)');
+    expect(button).toHaveStyle("background-color: rgba(0, 0, 0, 0)");
   });
 });

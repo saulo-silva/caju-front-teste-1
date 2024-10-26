@@ -1,5 +1,5 @@
 export function validateCPF(cpf: string) {
-  cpf = cpf.replace(/[^\d]+/g, '');
+  cpf = cpf.replace(/[^\d]+/g, "");
 
   if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) {
     return false;
@@ -37,12 +37,12 @@ export function validateCPF(cpf: string) {
 }
 
 export const formatCPF = (value: string) => {
-  value = value.replace(/\D/g, '');
+  value = value.replace(/\D/g, "");
 
   if (value.length <= 11) {
-    value = value.replace(/(\d{3})(\d)/, '$1.$2');
-    value = value.replace(/(\d{3})(\d)/, '$1.$2');
-    value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+    value = value.replace(/(\d{3})(\d)/, "$1.$2");
+    value = value.replace(/(\d{3})(\d)/, "$1.$2");
+    value = value.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
   }
 
   return value;

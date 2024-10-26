@@ -1,21 +1,21 @@
 import { useState } from "react";
 
-import Columns from "./components/Columns";
+import { useRegistrationSearch } from "@/common/hooks/react-query/registrations";
 
+import Columns from "./components/Columns";
 import { SearchBar } from "./components/Searchbar";
-import { useRegistrationSearch } from "@/common/hooks/react-query/registrations.ts";
 
 import * as S from "./styles";
 
 const DashboardPage = () => {
-  const [cpf, setCpf] = useState<string | undefined>('');
+  const [cpf, setCpf] = useState<string | undefined>("");
   const { data: registrations = [], refetch } = useRegistrationSearch({
     cpf: cpf,
   });
 
   const handleSearch = (search?: string) => {
-    setCpf(search)
-  }
+    setCpf(search);
+  };
 
   return (
     <S.Container>

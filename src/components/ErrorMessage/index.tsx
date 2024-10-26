@@ -5,4 +5,4 @@ const ErrorMessage = styled.span`
   color: red;
 `;
 
-export default ErrorMessage
+export default ErrorMessage;
