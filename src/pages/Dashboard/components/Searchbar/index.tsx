@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import { HiRefresh } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
-import { IconButton } from "@/components/Buttons/IconButton";
-import Button from "@/components/Buttons";
+import { ZodIssue } from "zod";
+
 import TextField from "@/components/TextField";
+import Button from "@/components/Buttons";
+import { schemaSearch } from "@/common/schemas/registration";
+import { formatCPF } from "@/common/utils";
+import { useDebouncedValue } from "@/common/hooks/use-debounced-value";
+import { IconButton } from "@/components/Buttons/IconButton";
+
 import routes from "@/router/routes";
 import * as S from "./styles";
-
-import { schemaSearch } from "@/common/schemas/registration.ts";
-import { formatCPF } from "@/common/utils";
-import { ZodIssue } from "zod";
-import { useDebouncedValue } from "@/common/hooks/use-debounced-value";
 
 interface Props {
   refetch: () => void
@@ -23,7 +24,7 @@ const getLastRecord = (arr: ZodIssue[] | null) => {
 
 export const SearchBar = ({ refetch, onSearch }: Props) => {
   const navigate = useNavigate();
-  const [cpf, setCpf] = useState<string>('');
+  const [cpf, setCpf] = useState<string>("");
   const [errorCpf, setErrorCpf] = useState<string | undefined>();
   const [debouncedCpf] = useDebouncedValue(cpf, 500);
 

@@ -1,10 +1,10 @@
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import {describe, it, expect, vi, Mock} from "vitest";
 import NewUserPage from "@/pages/NewUser";
 import { Toaster } from "sonner";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 
 const queryClient = new QueryClient();
@@ -60,7 +60,7 @@ describe("NewUserPage", () => {
 
     await waitFor(async () => {
       expect(navigate).toHaveBeenCalledWith("/dashboard");
-      expect(screen.getByText('Registro criado com sucesso!', { exact: true })).toBeInTheDocument();
+      expect(screen.getByText("Registro criado com sucesso!", { exact: true })).toBeInTheDocument();
     });
   });
 

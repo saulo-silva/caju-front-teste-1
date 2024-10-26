@@ -1,7 +1,7 @@
-import { z } from 'zod';
-import { validateCPF } from "@/common/utils.ts";
+import { z } from "zod";
+import { validateCPF } from "@/common/utils";
 
-export const statusSchema = z.enum(['APPROVED', 'REVIEW', 'REPROVED']);
+export const statusSchema = z.enum(["APPROVED", "REVIEW", "REPROVED"]);
 
 const emailSchema = z.string().email({ message: "Por favor, digite um formato de e-mail válido" });
 
@@ -11,11 +11,11 @@ const employeeNameSchema = z
   .refine((name) => /^[^\d]/.test(name), {
     message: "O nome não pode começar com um número",
   })
-  .refine((name) => name.includes(' '), {
+  .refine((name) => name.includes(" "), {
     message: "O nome do funcionário deve ser completo",
   })
   .refine((name) => {
-    const parts = name.split(' ');
+    const parts = name.split(" ");
     return parts.every(part => part.length >= 2);
   }, { message: "É necessário ter dois caracteres, entre nome e sobrenome" });
 
@@ -44,7 +44,7 @@ export const schemaSearch = z.object({
 
 export type Registration = z.infer<typeof schema> & {
   id?: number;
-  status?: 'APPROVED' | 'REVIEW' | 'REPROVED';
+  status?: "APPROVED" | "REVIEW" | "REPROVED";
 };
 
 export type RegistrationSearch = z.infer<typeof schemaSearch>;

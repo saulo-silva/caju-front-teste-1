@@ -1,10 +1,10 @@
 import NiceModal from "@ebay/nice-modal-react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ModalProvider } from 'styled-react-modal'
-import { Toaster } from 'sonner'
+import { ModalProvider } from "styled-react-modal";
+import { Toaster } from "sonner";
 
-import { Header } from "./components/Header";
 import LoadingOverlay from "@/components/LoadingOverlay";
+import { Header } from "./components/Header";
 
 import Router from "@/router";
 

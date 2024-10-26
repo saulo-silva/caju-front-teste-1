@@ -1,13 +1,13 @@
-import { http, HttpResponse } from 'msw';
+import { http, HttpResponse } from "msw";
 
-const baseUrl = 'http://localhost:3000';
+const baseUrl = "http://localhost:3000";
 
 export const handlers = [
   http.post(`${baseUrl}/registrations`, () => {
     return new HttpResponse({
       created: true,
-      message: 'Registration created successfully'
-    })
+      message: "Registration created successfully"
+    });
   }),
   http.get(`${baseUrl}/registrations`, (req, res, ctx) => {
     return res(
