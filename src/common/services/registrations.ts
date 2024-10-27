@@ -1,9 +1,10 @@
 import axiosInstance from "@/common/instanceAxios";
 import { Registration, RegistrationSearch } from "@/common/schemas/registration";
+import { formatDate } from "@/common/utils";
 
 export const Registrations = {
   async create(payload: Registration) {
-    return await axiosInstance.post("/registrations", { ...payload, status: "REVIEW", cpf: payload.cpf.replace(/\D/g, "") });
+    return await axiosInstance.post("/registrations", { ...payload, admissionDate: formatDate(payload.admissionDate), status: "REVIEW", cpf: payload.cpf.replace(/\D/g, "") });
   },
   async search(params?: RegistrationSearch) {
     return await axiosInstance.get("/registrations", {
