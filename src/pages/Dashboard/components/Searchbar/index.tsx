@@ -60,9 +60,9 @@ export const SearchBar = ({ refetch, onSearch }: Props) => {
 
       <S.Actions>
         <IconButton onClick={refetch} aria-label="refetch">
-          <HiRefresh />
+          <HiRefresh style={{ width: "24px", height: "24px" }} />
         </IconButton>
-        <Button onClick={() => goToNewAdmissionPage()}>Nova Admissão</Button>
+        <Button onClick={() => goToNewAdmissionPage()} $variant="primary">Nova Admissão</Button>
       </S.Actions>
     </S.Container>
   );

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
   border: 4px solid #fff;
   margin: 16px;
   border-radius: 8px;
@@ -26,7 +26,7 @@ export const Actions = styled.div`
   margin-top: 8px;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   justify-content: space-between;
 
   svg {

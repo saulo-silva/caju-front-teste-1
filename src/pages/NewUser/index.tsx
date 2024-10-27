@@ -81,7 +81,7 @@ const NewUserPage = () => {
           data-testid="admission-date-input"
         />
 
-        <Button type="submit" data-testid="submit-button">Cadastrar</Button>
+        <Button type="submit" $variant="primary" data-testid="submit-button">Cadastrar</Button>
       </S.Form>
     </S.Container>
   );

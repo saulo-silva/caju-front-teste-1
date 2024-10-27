@@ -1,34 +1,57 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const Button = styled.button`
-  outline: none;
-  display: flex;
-  align-items: center;
-  border: none;
-  border-radius: 36px;
-  padding: 8px 32px;
-  background-color: #64a98c;
-  cursor: pointer;
-  height: 56px;
-  color: #fff;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  font-size: 16px;
-  font-weight: 600;
+type ButtonProps = {
+  $variant?: "primary" | "secondary" | "tertiary";
+};
+
+const Button = styled.button<ButtonProps>`
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    cursor: pointer;
+    height: 56px;
+    font-size: 16px;
+    font-weight: 600;
+
+    &:focus {
+        outline: 2px solid #000;
+        outline-offset: 2px;
+    }
+
+    ${(props) =>
+            props.$variant === "primary" &&
+            css`
+                background-color: #e80537;
+                color: #fff;
+
+                &:hover {
+                    background-color: #a20326;
+                }
+            `}
+
+    ${(props) =>
+            props.$variant === "secondary" &&
+            css`
+                background-color: transparent;
+                border: 1px solid #e80537;
+                color: #e80537;
+
+                &:hover {
+                    background-color: #fafafa;
+                }
+            `}
+
+    ${(props) =>
+            props.$variant === "tertiary" &&
+            css`
+                color: #e80537;
+                background-color: transparent;
+                border: none;
+            `}
 `;
-
-export const ButtonSmall = styled.button<{
-  $bgcolor?: string;
-  $color?: string;
-}>`
-  font-size: 12px;
-  outline: none;
-  border-radius: 4px;
-  border: none;
-  padding: 4px 16px;
-  background-color: ${(props) => props.$bgcolor || "transparent"};
-  color: ${(props) => props.$color || "#000"};
-  cursor: pointer;
-`;
-
 
 export default Button;

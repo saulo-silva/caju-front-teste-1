@@ -3,7 +3,7 @@ import Modal from "styled-react-modal";
 import styled from "styled-components";
 import { useModal, create } from "@ebay/nice-modal-react";
 
-import { ButtonSmall } from "@/components/Buttons";
+import Button from "@/components/Buttons";
 
 const StyledModal = Modal.styled`
   width: 25rem;
@@ -30,13 +30,46 @@ const Actions = styled.div`
   gap: 8px;
 `;
 
+type statusType = "APPROVED" | "REPROVED" | "DELETE" | "REVIEW";
+
 type Props = {
-  title: string;
+  status: statusType;
 }
 
-const ConfirmationModal = create(({ title }: Props) => {
+const ConfirmationModal = create(({ status }: Props) => {
   const modal = useModal();
   const [opacity, setOpacity] = useState(0);
+
+  const optionsLabels = (status: statusType) => {
+    switch (status) {
+      case "APPROVED":
+        return {
+          title: "Aprovar",
+          confirm: "Aprovar",
+          cancel: "Cancelar"
+        };
+      case "REPROVED":
+        return {
+          title: "Rejeitar",
+          confirm: "Rejeitar",
+          cancel: "Cancelar"
+        };
+      case "REVIEW":
+        return {
+          title: "Revisar",
+          confirm: "Revisar",
+          cancel: "Cancelar"
+        };
+      case "DELETE":
+        return {
+          title: "Excluir",
+          confirm: "Excluir",
+          cancel: "Cancelar"
+        };
+    }
+  };
+
+  const { confirm, cancel, title } = optionsLabels(status);
 
   const handleCloseModal = useCallback((): void => {
     setOpacity(0);
@@ -57,6 +90,8 @@ const ConfirmationModal = create(({ title }: Props) => {
     handleCloseModal();
   }, [modal, handleCloseModal]);
 
+  // Render
+
   return (
     <StyledModal
       isOpen={modal.visible}
@@ -65,10 +100,10 @@ const ConfirmationModal = create(({ title }: Props) => {
       afterOpen={afterOpen}
       opacity={opacity}
     >
-      <h2>{title}</h2>
+      <h2>Tem certeza que deseja {title}?</h2>
       <Actions>
-        <ButtonSmall type="button" $bgcolor="#4CAF50" onClick={handleConfirm}>Sim</ButtonSmall>
-        <ButtonSmall type="button" $bgcolor="#F44336" onClick={handleCancel}>Cancelar</ButtonSmall>
+        <Button type="button" $variant="primary" onClick={handleConfirm}>{confirm}</Button>
+        <Button type="button" $variant="secondary" onClick={handleCancel}>{cancel}</Button>
       </Actions>
     </StyledModal>
   );
