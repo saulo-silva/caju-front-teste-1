@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 type ButtonProps = {
-  $variant?: "primary" | "secondary" | "tertiary";
+  $variant?: "primary" | "secondary" | "tertiary" | "green";
 };
 
 const Button = styled.button<ButtonProps>`
@@ -42,6 +42,16 @@ const Button = styled.button<ButtonProps>`
 
                 &:hover {
                     background-color: #fafafa;
+                }
+            `}
+    ${(props) =>
+            props.$variant === "green" &&
+            css`
+                background-color: #59d359;
+                color: #000;
+
+                &:hover {
+                    background-color: #32be32;
                 }
             `}
 

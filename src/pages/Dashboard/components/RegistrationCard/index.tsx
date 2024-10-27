@@ -40,7 +40,7 @@ const updateStatus = (status: "APPROVED" | "REVIEW" | "REPROVED") => {
   if (status === "REVIEW") {
     return (
       <>
-        <Button onClick={() => updateStatus("APPROVED")} $variant="primary" aria-label="Aprovar">Aprovar</Button>
+        <Button onClick={() => updateStatus("APPROVED")} $variant="green" aria-label="Aprovar">Aprovar</Button>
         <Button onClick={() => updateStatus("REPROVED")} $variant="secondary" aria-label="Reprovar">Reprovar</Button>
       </>
     );
