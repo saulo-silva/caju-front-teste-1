@@ -7,7 +7,8 @@
     "dev": "vite --mode development",
     "init:db": "json-server --watch db.json",
     "build": "tsc && vite build",
-    "test:dev": "vitest --ui --coverage",
+    "test:dev": "vitest",
+    "test:coverage": "vitest --ui --coverage",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
     "preview": "vite preview"
