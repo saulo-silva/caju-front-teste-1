@@ -3,7 +3,7 @@ import { Registration, RegistrationSearch } from "@/common/schemas/registration"
 
 export const Registrations = {
   async create(payload: Registration) {
-    return await axiosInstance.post("/registrations", payload);
+    return await axiosInstance.post("/registrations", { ...payload, status: "REVIEW", cpf: payload.cpf.replace(/\D/g, "") });
   },
   async search(params?: RegistrationSearch) {
     return await axiosInstance.get("/registrations", {
@@ -16,6 +16,6 @@ export const Registrations = {
     return await axiosInstance.delete(`/registrations/${id}`);
   },
   async updateStatus(id: number, status: "APPROVED" | "REVIEW" | "REPROVED") {
-    return await axiosInstance.put(`/registrations/${id}/status`, { status });
+    return await axiosInstance.patch(`/registrations/${id}`, { status });
   }
 };
