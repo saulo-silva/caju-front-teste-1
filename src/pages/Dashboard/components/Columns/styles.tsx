@@ -27,7 +27,7 @@ export const Column = styled.div<{ $status: RegistrationStatus }>`
   height: auto;
   background-color: ${({ $status }) =>
     registrationStatusStyles[$status].background};
-  border-radius: 32px;
+  border-radius: 8px;
   min-height: 80vh;
   max-height: 80vh;
 `;

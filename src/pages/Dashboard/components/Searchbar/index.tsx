@@ -33,7 +33,7 @@ export const SearchBar = ({ refetch, onSearch }: Props) => {
   };
 
   useEffect(() => {
-    if (debouncedCpf) {
+    if (debouncedCpf || debouncedCpf === "") {
       onSearch(debouncedCpf);
     }
   }, [debouncedCpf, onSearch]);
