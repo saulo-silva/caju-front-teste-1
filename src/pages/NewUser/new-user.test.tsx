@@ -60,7 +60,7 @@ describe("NewUserPage", () => {
 
     await waitFor(async () => {
       expect(navigate).toHaveBeenCalledWith("/dashboard");
-      expect(screen.getByText("Registro criado com sucesso!", { exact: true })).toBeInTheDocument();
+      expect(screen.getByText("Registro criado com sucesso!")).toBeInTheDocument();
     });
   });
 

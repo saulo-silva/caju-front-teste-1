@@ -43,11 +43,11 @@ type Props = {
   error?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
-const TextField = forwardRef<HTMLInputElement, Props>(({ label, error, name, ...rest }, ref) => {
+const TextField = forwardRef<HTMLInputElement, Props>(({ label, error, id, ...rest }, ref) => {
   return (
     <Container>
-      {label && <label htmlFor={name}>{label}</label>}
-      <Input ref={ref} id={name} {...rest} />
+      {label && <label htmlFor={id}>{label}</label>}
+      <Input ref={ref} id={id} {...rest} />
       {error && <ErrorMessage>{error}</ErrorMessage>}
     </Container>
   );

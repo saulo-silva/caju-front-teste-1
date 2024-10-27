@@ -48,6 +48,7 @@ const NewUserPage = () => {
 
         <TextField
           {...register("employeeName")}
+          id="employeeName"
           error={errors.employeeName?.message}
           placeholder="Nome"
           label="Nome"
@@ -55,6 +56,7 @@ const NewUserPage = () => {
         />
         <TextField
           {...register("email")}
+          id="email"
           error={errors.email?.message}
           placeholder="Email"
           label="Email"
@@ -63,6 +65,7 @@ const NewUserPage = () => {
         />
         <TextField
           {...register("cpf")}
+          id="cpf"
           error={errors.cpf?.message}
           placeholder="CPF"
           label="CPF"
@@ -75,6 +78,7 @@ const NewUserPage = () => {
         />
         <TextField
           {...register("admissionDate")}
+          id="admissionDate"
           error={errors.admissionDate?.message}
           label="Data de admissão"
           type="date"
