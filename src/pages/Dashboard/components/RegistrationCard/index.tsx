@@ -9,7 +9,7 @@ import {
 import { useRegistrationDelete, useRegistrationUpdateStatus } from "@/common/hooks/react-query/registrations";
 
 import ConfirmationModal from "@/components/ConfirmationModal";
-import { ButtonSmall } from "@/components/Buttons";
+import Button from "@/components/Buttons";
 
 import * as S from "./styles";
 
@@ -30,15 +30,7 @@ const ActionButtons = ({ id, status }: { id: number; status: "APPROVED" | "REVIE
   const mutation = useRegistrationUpdateStatus();
 
 const updateStatus = (status: "APPROVED" | "REVIEW" | "REPROVED") => {
-  const messages = {
-    "APPROVED": "Tem certeza que deseja aprovar?",
-    "REPROVED": "Tem certeza que deseja reprovar?",
-    "REVIEW": "Tem certeza que deseja revisar novamente?",
-  };
-
-  const message = messages[status] || "Tem certeza que deseja atualizar situação?";
-
-  modal.show({ title: message }).then((result) => {
+  modal.show({ status }).then((result) => {
     if (result) {
       mutation.mutate({ id, status });
     }
@@ -48,14 +40,14 @@ const updateStatus = (status: "APPROVED" | "REVIEW" | "REPROVED") => {
   if (status === "REVIEW") {
     return (
       <>
-        <ButtonSmall onClick={() => updateStatus("APPROVED")} $bgcolor="rgb(155, 229, 155)" aria-label="Aprovar">Aprovar</ButtonSmall>
-        <ButtonSmall onClick={() => updateStatus("REPROVED")} $bgcolor="rgb(255, 145, 154)" aria-label="Reprovar">Reprovar</ButtonSmall>
+        <Button onClick={() => updateStatus("APPROVED")} $variant="primary" aria-label="Aprovar">Aprovar</Button>
+        <Button onClick={() => updateStatus("REPROVED")} $variant="secondary" aria-label="Reprovar">Reprovar</Button>
       </>
     );
   }
 
   if (status === "REPROVED" || status === "APPROVED") {
-    return <ButtonSmall onClick={() => updateStatus("REVIEW")} $bgcolor="#ff8858" aria-label="Revisar novamente">Revisar novamente</ButtonSmall>;
+    return <Button onClick={() => updateStatus("REVIEW")} $variant="primary" aria-label="Revisar novamente">Revisar novamente</Button>;
   }
 
   return null;
@@ -67,7 +59,7 @@ const RegistrationCard = ({ registration }: Props) => {
   const modal = useModal(ConfirmationModal);
 
   const handleDelete = () => {
-    modal.show({ title: "Tem certeza que deseja excluir?" }).then((result) => {
+    modal.show({ status: "DELETE" }).then((result) => {
       if (result) {
         mutation.mutate({ id });
       }
@@ -90,9 +82,9 @@ const RegistrationCard = ({ registration }: Props) => {
       </S.IconAndText>
       <S.Actions>
         <ActionButtons id={id} status={status} />
-        <ButtonSmall onClick={handleDelete} className="trash" $bgcolor="transparent" aria-label="Remover">
+        <Button onClick={handleDelete} $variant="tertiary" className="trash" aria-label="Remover">
           <HiOutlineTrash />
-        </ButtonSmall>
+        </Button>
       </S.Actions>
     </S.Card>
   );
