@@ -2,7 +2,7 @@ import styled from "styled-components";
 const registrationStatusStyles: Record<string, { background: string; title: string }> = {
   REVIEW: {
     background: "#FDF8E9",
-    title: "#EFC24D",
+    title: "#5D3E09",
   },
   APPROVED: {
     background: "#EEEEFD",

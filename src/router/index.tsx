@@ -21,9 +21,9 @@ const router = createBrowserRouter([
 
 const Router = () => {
   return (
-    <div style={{ marginTop: 64 }}>
+    <main role="main" style={{ marginTop: 64 }}>
       <RouterProvider router={router} />
-    </div>
+    </main>
   );
 };
 
