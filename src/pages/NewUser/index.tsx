@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { HiOutlineArrowLeft } from "react-icons/hi";
 import { useForm } from "react-hook-form";
@@ -19,7 +20,7 @@ import * as S from "./styles";
 const NewUserPage = () => {
   const mutation = useRegistrationCreate();
   const navigate = useNavigate();
-  const { register, handleSubmit, setValue, formState: { errors } } = useForm<Registration>({
+  const { register, handleSubmit, setValue, setFocus, formState: { errors } } = useForm<Registration>({
     resolver: zodResolver(schema)
   });
 
@@ -38,6 +39,10 @@ const NewUserPage = () => {
       }
     });
   });
+
+  useEffect(() => {
+    setFocus("employeeName");
+  }, [setFocus]);
 
   return (
     <S.Container>
